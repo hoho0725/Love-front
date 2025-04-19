@@ -1,0 +1,71 @@
+/* src/components/MemoryCard.css */
+.memory-card {
+    background-color: #fff8fb;
+    border: 2px solid #f8bbd0;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(248, 187, 208, 0.3);
+    transition: transform 0.2s;
+  }
+  
+  .memory-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .memory-card-title {
+    font-family: 'Gowun Dodum', 'SUIT', sans-serif;
+    color: #d81b60;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .memory-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .edit-btn,
+  .delete-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .edit-btn {
+    background-color: #fce4ec;
+    color: #d81b60;
+  }
+  
+  .delete-btn {
+    background-color: #ffeef0;
+    color: #c62828;
+  }
+  
+  .edit-btn:hover {
+    background-color: #f8bbd0;
+  }
+  
+  .delete-btn:hover {
+    background-color: #ffcdd2;
+  }
+  .random-badge {
+    background-color: #fce4ec;
+    color: #d81b60;
+    padding: 4px 8px;
+    display: inline-block;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .random-card {
+    border: 2px dashed #f8bbd0;
+    background-color: #fff0f7;
+  }
+  

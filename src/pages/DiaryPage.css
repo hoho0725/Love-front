@@ -1,0 +1,171 @@
+.diary-card {
+  background-color: #ffe4ec;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(248, 187, 208, 0.4);
+  margin: 1rem auto;
+  font-family: 'SUIT', 'Gowun Dodum', sans-serif;
+  width: 90%;
+  max-width: 500px;
+  transition: transform 0.3s ease;
+}
+
+.diary-title {
+  color: #d81b60;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.diary-meta {
+  font-size: 0.95rem;
+  color: #999;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.diary-content {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  color: #444;
+  text-align: left;
+}
+
+/* Calendar 감성 꾸미기 */
+.react-calendar {
+  width: 90%;
+  max-width: 400px;
+  background-color: #fffafc;
+  border: none;
+  border-radius: 16px;
+  padding: 1rem;
+  font-family: 'SUIT', 'Gowun Dodum', sans-serif;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+  margin: 0 auto;
+}
+
+.react-calendar__tile {
+  padding: 0.6rem 0;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+  background: none;
+  border-radius: 12px;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.react-calendar__tile--now {
+  background: #ffeef3;
+  border-radius: 50%;
+  color: #d81b60;
+}
+
+.react-calendar__tile--active {
+  background: #f8bbd0;
+  border-radius: 50%;
+  color: white;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #d81b60;
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #ccc !important;
+  opacity: 0.8;
+  z-index: 2;
+}
+
+.react-calendar__month-view__days__day--weekend:nth-child(7n) {
+  color: #4a90e2;
+  z-index: 1;
+}
+
+.react-calendar__month-view__days__day--weekend:nth-child(7n+1) {
+  color: #ff5252;
+  z-index: 1;
+}
+
+.tile-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.heart.red {
+  color: red;
+}
+
+.heart.pink {
+  color: pink;
+}
+
+.heart.blue {
+  color: cornflowerblue;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-bottom: 6px;
+  z-index: 1;
+}
+
+.dot.blue {
+  background-color: cornflowerblue;
+}
+
+.dot.pink {
+  background-color: #ff69b4;
+}
+
+.diary-page {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.diary-title {
+  font-size: 2rem;
+  color: #d81b60;
+  margin-bottom: 1.5rem;
+  font-family: 'Gowun Dodum', 'SUIT', sans-serif;
+  text-align: center;
+}
+
+/* 힌트를 위한 상하 스크롤 효과 */
+.diary-modal-content {
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  max-height: 80vh;
+}
+
+.diary-modal-content > * {
+  scroll-snap-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

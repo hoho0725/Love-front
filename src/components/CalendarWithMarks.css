@@ -1,0 +1,30 @@
+.react-calendar__tile {
+    position: relative;
+  }
+  
+  /* 날짜 텍스트를 포함한 박스 뒤에 하트를 배치 */
+  .heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  .heart.red { color: red; }
+  .heart.pink { color: pink; }
+  .heart.blue { color: cornflowerblue; }
+  
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #d81b60;
+    margin-top: 4px;
+    z-index: 2;
+    position: relative;
+  }
+  
