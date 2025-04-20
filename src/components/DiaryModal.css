@@ -1,42 +1,183 @@
+/* DiaryModal.css */
 .diary-modal-overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 20;
-  }
-  
-  .diary-modal-content {
-    background-color: #fff0f5;
-    border-radius: 20px;
-    padding: 2rem;
-    max-width: 600px;
-    width: 90%;
-    max-height: 90%;
-    overflow-y: auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    position: relative;
-  }
-  
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  
-  .modal-date {
-    font-weight: bold;
-    color: #d81b60;
-  }
-  
-  .close-btn {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: #888;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* Dimmed background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+/* Modal content container */
+.diary-modal-content {
+  background-color: #fff0f5; /* Light pink background */
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header of the modal (Date and Close Button) */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.modal-date {
+  font-weight: bold;
+  color: #d81b60; /* Pink color for the date */
+}
+
+/* Close button styling */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #888;
+}
+
+/* Button to add a new diary entry */
+.add-diary-button-container {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.add-diary-button {
+  background-color: #007bff; /* Blue button for "Add Diary" */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.add-diary-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Diary card preview styling (preview of next/previous diary) */
+.diary-preview {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 1px; /* 간격을 줄여서 카드들이 더 가깝게 보이도록 조정 */
+  padding: 10px;
+  cursor: pointer;
+  background-color: #ffe4ec; /* 일기 카드와 동일한 분홍색 배경 */
+  border-radius: 16px; /* 일기 카드와 동일한 둥근 모서리 */
+  width: 100%; /* 일기 카드와 동일한 가로 크기 */
+  height: calc(100% - 50px); /* 세로 크기를 조정하여 잘린 느낌 */
+  overflow: hidden; /* 잘린 부분 숨김 */
+  box-shadow: 0 4px 10px rgba(248, 187, 208, 0.3); /* 일기 카드와 동일한 그림자 */
+}
+
+.diary-preview.preview-up {
+  color: #007bff; /* 파란색 텍스트 */
+  background-color: #ffe4ec; /* 분홍색 배경 */
+}
+
+/* 미리보기 카드 - 아래쪽 */
+.diary-preview.preview-down {
+  color: #28a745; /* 초록색 텍스트 */
+  background-color: #ffe4ec; /* 분홍색 배경 */
+}
+
+.diary-preview .preview-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Form container for the Diary Form modal */
+.diary-form-container {
+  margin-top: 2px;
+  width: 100%;
+}
+
+/* Styling for the Diary Form Modal itself */
+.diary-form-modal {
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.diary-form-modal input,
+.diary-form-modal textarea,
+.diary-form-modal select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.diary-form-modal button {
+  padding: 10px 15px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.diary-form-modal button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for the Diary content itself */
+.diary-card {
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.diary-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.diary-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+.diary-meta {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Styling for the card layout for swiper functionality */
+.diary-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.diary-card .diary-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}

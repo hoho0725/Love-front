@@ -26,8 +26,9 @@ export const updateDiary = (id, data) => API.put(`/diaries/${id}`, data);
 
 export const deleteDiary = (id) => API.delete(`/diaries/${id}`);
 
-// 🖼️ 이미지 업로드 (formData: { image: File })
-export const uploadImage = (formData) =>
+export const uploadFile = (formData) => 
   API.post('/upload', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
   });

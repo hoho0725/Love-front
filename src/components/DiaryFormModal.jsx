@@ -1,99 +1,45 @@
-// src/components/DiaryModal.jsx
-import React, { useEffect, useState } from 'react';
-import './DiaryModal.css';
-import DiaryCard from './DiaryCard';
-import DiaryFormModal from './DiaryFormModal';
+import React, { useState } from 'react';
+import './DiaryFormModal.css';
 
-const MAX_TYPES = [
-  '호성',
-  '진서',
-  '데이트후기-호성',
-  '데이트후기-진서'
-];
+function DiaryFormModal({ onClose, onSubmit, defaultDate, availableTypes }) {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [type, setType] = useState(availableTypes[0] || '호성'); // 기본값으로 첫 번째 타입을 선택
 
-function DiaryModal({ diaries, onClose, selectedDate, onSubmit }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const startY = React.useRef(null);
-
-  const existingTypes = (diaries || []).map((d) => d.type);
-  const availableTypes = MAX_TYPES.filter((type) => !existingTypes.includes(type));
-  const showForm = availableTypes.length > 0;
-
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, []);
-
-  const handleTouchStart = (e) => {
-    startY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchEnd = (e) => {
-    const endY = e.changedTouches[0].clientY;
-    const diff = startY.current - endY;
-    if (diff > 50 && currentIndex < diaries.length - 1) {
-      setCurrentIndex((i) => i + 1);
-    } else if (diff < -50 && currentIndex > 0) {
-      setCurrentIndex((i) => i - 1);
-    }
-  };
-
-  const handleSubmit = (data) => {
-    onSubmit(data);
+  const handleSubmit = () => {
+    if (!content.trim()) return;
+    onSubmit({ type, title, content, createdAt: defaultDate }); // 데이터를 부모 컴포넌트로 전달
+    setTitle('');
+    setContent('');
   };
 
   return (
-    <div className="diary-modal-overlay" onClick={onClose}>
-      <div
-        className="diary-modal-content"
-        onClick={(e) => e.stopPropagation()}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        <div className="modal-header">
-          <span className="modal-date">📅 {selectedDate.toLocaleDateString()}</span>
-          <button className="close-btn" onClick={onClose}>✖</button>
+    <div className="diary-form-overlay" onClick={onClose}>
+      <div className="diary-form-modal" onClick={(e) => e.stopPropagation()}>
+        <h3>✍️ 일기 작성</h3>
+        <label>
+          종류
+          <select value={type} onChange={(e) => setType(e.target.value)}>
+            {availableTypes.map((t) => (
+              <option key={t} value={t}>{t}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          제목
+          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        </label>
+        <label>
+          내용
+          <textarea rows={6} value={content} onChange={(e) => setContent(e.target.value)} />
+        </label>
+        <div className="form-buttons">
+          <button onClick={onClose}>취소</button>
+          <button onClick={handleSubmit}>등록</button>
         </div>
-
-        {/* 이전 미리보기 */}
-        {currentIndex > 0 && (
-          <div
-            className="diary-preview preview-up"
-            data-title={diaries[currentIndex - 1].title || '제목 없음'}
-          >
-            ⬆ 다른 일기
-          </div>
-        )}
-
-        {/* 현재 일기 */}
-        {diaries.length > 0 && <DiaryCard diary={diaries[currentIndex]} />}
-
-        {/* 다음 미리보기 */}
-        {currentIndex < diaries.length - 1 && (
-          <div
-            className="diary-preview preview-down"
-            data-title={diaries[currentIndex + 1].title || '제목 없음'}
-          >
-            ⬇ 다른 일기
-          </div>
-        )}
-
-        {/* 작성폼 */}
-        {showForm && (
-          <div className="diary-form-container">
-            <DiaryFormModal
-              onClose={onClose}
-              onSubmit={handleSubmit}
-              defaultDate={selectedDate}
-              availableTypes={availableTypes}
-            />
-          </div>
-        )}
       </div>
     </div>
   );
 }
 
-export default DiaryModal;
+export default DiaryFormModal;
