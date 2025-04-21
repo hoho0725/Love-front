@@ -83,12 +83,12 @@
   z-index: 2;
 }
 
-.react-calendar__month-view__days__day--weekend:nth-child(7n) {
+.react-calendar__month-view__days__day--weekend:nth-child(7n-1) {
   color: #4a90e2;
   z-index: 1;
 }
 
-.react-calendar__month-view__days__day--weekend:nth-child(7n+1) {
+.react-calendar__month-view__days__day--weekend:nth-child(7n) {
   color: #ff5252;
   z-index: 1;
 }

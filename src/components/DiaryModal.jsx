@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './DiaryModal.css';
 import DiaryCard from './DiaryCard';
 import DiaryFormModal from './DiaryFormModal';
+import { updateDiary, deleteDiary } from '../api'; // API import
 
 const MAX_TYPES = [
   '호성',
@@ -13,7 +14,13 @@ const MAX_TYPES = [
 function DiaryModal({ diaries = [], onClose, selectedDate, onSubmit }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showForm, setShowForm] = useState(false); // showForm 상태 추가
-  const startY = React.useRef(null);
+  const [editingDiary, setEditingDiary] = useState(null); // 수정할 일기를 저장할 상태 추가
+  const [filteredDiaries, setFilteredDiaries] = useState(diaries);
+  const startY = useRef(null);
+
+  useEffect(() => {
+    setFilteredDiaries(diaries); // 다이어리를 처음에 필터링하여 상태 설정
+  }, [diaries]);
 
   if (!selectedDate) return null; // selectedDate가 없으면 렌더링하지 않음
 
@@ -25,9 +32,30 @@ function DiaryModal({ diaries = [], onClose, selectedDate, onSubmit }) {
   // 작성 버튼을 숨기기 위한 조건: 모든 MAX_TYPES가 작성되었을 때
   const isAllDiariesWritten = existingTypes.length === MAX_TYPES.length;
 
+  // 일기 수정 함수
+  const handleEdit = (diary) => {
+    setShowForm(true); // 일기 수정 폼을 열기
+    setEditingDiary(diary); // 수정할 일기 데이터를 설정
+  };
+
+  // 일기 삭제 함수
+  const handleDelete = async (id) => {
+    await deleteDiary(id); // API를 통해 삭제
+    setFilteredDiaries((prev) => prev.filter((diary) => diary.id !== id)); // 로컬 상태에서 삭제
+  };
+
   const handleSubmit = (data) => {
-    onSubmit(data); // 일기 제출 처리
-    setShowForm(false); // 작성 후 폼 닫기
+    if (editingDiary) {
+      updateDiary(editingDiary.id, data).then((res) => {
+        setFilteredDiaries((prev) =>
+          prev.map((diary) => (diary.id === res.data.diary.id ? res.data.diary : diary))
+        );
+        setShowForm(false);
+      });
+    } else {
+      onSubmit(data); // 일기 제출 처리
+      setShowForm(false); // 작성 후 폼 닫기
+    }
   };
 
   const handleTouchStart = (e) => {
@@ -92,16 +120,22 @@ function DiaryModal({ diaries = [], onClose, selectedDate, onSubmit }) {
         )}
 
         {/* 현재 일기 */}
-        {diaries.length > 0 && diaries[currentIndex] && <DiaryCard diary={diaries[currentIndex]} />}
+        {filteredDiaries.length > 0 && filteredDiaries[currentIndex] && (
+          <DiaryCard
+            diary={filteredDiaries[currentIndex]}
+            onEdit={handleEdit} // 수정 함수 전달
+            onDelete={handleDelete} // 삭제 함수 전달
+          />
+        )}
 
         {/* 다음 미리보기 (잘린 카드) */}
-        {currentIndex < diaries.length - 1 && (
+        {currentIndex < filteredDiaries.length - 1 && (
           <div
             className="diary-preview preview-down"
             onClick={() => setCurrentIndex(currentIndex + 1)} // 다음 일기로 이동
           >
             <div className="preview-title">
-              {diaries[currentIndex + 1]?.title || '제목 없음'}
+              {filteredDiaries[currentIndex + 1]?.title || '제목 없음'}
             </div>
           </div>
         )}
@@ -114,6 +148,7 @@ function DiaryModal({ diaries = [], onClose, selectedDate, onSubmit }) {
               onSubmit={handleSubmit}
               defaultDate={selectedDate}
               availableTypes={availableTypes}
+              editingDiary={editingDiary} // 수정할 일기 전달
             />
           </div>
         )}
