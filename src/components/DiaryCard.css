@@ -31,3 +31,22 @@
     color: #444;
   }
   
+  .diary-edit-btn,
+  .diary-delete-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .diary-edit-btn {
+    background-color: #fce4ec;
+    color: #d81b60;
+  }
+  
+  .diary-delete-btnn {
+    background-color: #ffeef0;
+    color: #c62828;
+  }
