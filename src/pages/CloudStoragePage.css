@@ -1,0 +1,7 @@
+/* CloudStoragePage.css */
+
+.cloud-storage-page {
+  padding: 2rem;
+  background-color: #fff0f5;  /* 연한 핑크색 배경 */
+  min-height: 100vh;
+}

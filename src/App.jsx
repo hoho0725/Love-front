@@ -13,13 +13,13 @@ function App() {
           <Link to="/">홈</Link>
           <Link to="/diary">일기</Link>
           <Link to="/memory">추억</Link>
-          <Link to="/cloud-storage">저장소</Link>
+          <Link to="/usb">저장소</Link>
         </nav>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/diary" element={<DiaryPage />} />
           <Route path="/memory" element={<MemoryPage />} />
-    	  <Route path="/cloud-storage" element={<CloudStoragePage/>} />
+    	  <Route path="/usb" element={<CloudStoragePage/>} />
         </Routes>
       </div>
     </Router>

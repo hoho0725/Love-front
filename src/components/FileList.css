@@ -1,0 +1,85 @@
+/* FileList.css */
+
+.file-list {
+  padding: 2rem;
+  background-color: #fff0f5;  /* 연한 핑크색 배경 */
+  min-height: 100vh;
+}
+
+.file-list-title {
+  font-size: 1.8rem;
+  color: #d81b60;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.file-list-ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.file-list-item {
+  background-color: #fff8fb; /* 연한 파스텔 핑크 배경 */
+  border: 2px dashed #f8bbd0; /* 대시 테두리 */
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;  /* 아이템과 버튼들을 양쪽으로 배치 */
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(248, 187, 208, 0.1);
+  overflow: hidden; /* 너무 긴 텍스트가 넘칠 때 숨기기 */
+}
+
+.file-name {
+  font-size: 1.2rem;
+  color: #d81b60; /* 진한 핑크 텍스트 */
+  white-space: nowrap; /* 텍스트가 한 줄로 유지되게 하기 */
+  overflow: hidden; /* 넘치는 텍스트는 잘리도록 설정 */
+  text-overflow: ellipsis; /* 잘리면 '...'으로 표시 */
+}
+
+.file-button-container {
+  display: flex;
+  justify-content: flex-end; /* 버튼들을 오른쪽으로 정렬 */
+  gap: 1rem; /* 버튼들 사이에 간격을 추가 */
+}
+
+.file-button {
+  background-color: #fce4ec; /* 연한 핑크 버튼 */
+  color: #d81b60;
+  border: none;
+  border-radius: 16px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.file-button:hover {
+  background-color: #f8bbd0; /* 버튼 호버 시 진한 핑크 */
+  transform: scale(1.05);
+}
+
+.download-btn {
+  background-color: #fce4ec; /* 다운로드 버튼 색상 */
+}
+
+.download-btn:hover {
+  background-color: #f8bbd0; /* 다운로드 버튼 호버 색상 */
+}
+
+.delete-btn {
+  background-color: #f8bbd0; /* 삭제 버튼 색상 */
+}
+
+.delete-btn:hover {
+  background-color: #f06292; /* 삭제 버튼 호버 색상 */
+}
+
+.file-list-error {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}

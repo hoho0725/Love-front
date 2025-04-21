@@ -8,8 +8,10 @@ function DiaryCard({ diary, onEdit, onDelete }) {
       <p className="diary-meta">✍️ {diary.type}</p>
       <p className="diary-content">{diary.content}</p>
       <div className="diary-actions">
-        <button className="diary-actions" onClick={() => onEdit(diary)}>수정</button>
-        <button className="diary-actions" onClick={() => onDelete(diary.id)}>삭제</button>
+        <div className="diary-actions">
+			<button className="edit-btn" onClick={() => onEdit(diary)}>수정</button>
+			<button className="delete-btn" onClick={() => onDelete(diary.id)}>삭제</button>
+		  </div>
       </div>
     </div>
   );

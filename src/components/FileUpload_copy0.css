@@ -1,0 +1,48 @@
+
+.file-upload {
+  background-color: #fff8fb; /* 연한 파스텔 핑크 배경 */
+  border: 2px dashed #f8bbd0; /* 파스텔 핑크 색상의 대시 테두리 */
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(248, 187, 208, 0.1); /* 부드러운 그림자 효과 */
+  margin-bottom: 2rem;
+}
+
+.file-upload input[type="file"] {
+  background-color: #fff; /* 하얀색 배경 */
+  border: 1px solid #f8bbd0; /* 테두리는 파스텔 핑크 */
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #d81b60; /* 강조된 색상: 진한 핑크 */
+  margin-right: 1rem;
+}
+
+.file-upload button {
+  background-color: #fce4ec; /* 연한 핑크 배경 */
+  color: #d81b60; /* 진한 핑크 텍스트 */
+  border: none;
+  border-radius: 16px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 10px rgba(248, 187, 208, 0.2); /* 부드러운 그림자 */
+}
+
+.file-upload button:hover {
+  background-color: #f8bbd0; /* 호버시 진한 핑크로 변경 */
+  transform: scale(1.05);
+}
+
+.file-upload button:disabled {
+  background-color: #ffe4ec; /* 비활성화된 버튼은 연한 핑크 */
+  cursor: not-allowed;
+}
+
+.file-upload p {
+  color: #d81b60; /* 진한 핑크 색상 */
+  font-weight: bold;
+}
+

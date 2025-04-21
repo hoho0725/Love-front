@@ -39,16 +39,14 @@
 /* 버튼들 */
 .diary-actions {
   display: flex;
-  gap: 0.8rem;
+  gap: 1rem;  /* 버튼 간 간격을 더 넓게 */
   margin-top: 1rem;
   justify-content: flex-end;
 }
 
 .diary-actions button {
-  background-color: #d81b60;
-  color: white;
   font-size: 0.95rem;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -57,15 +55,40 @@
   align-items: center;
 }
 
-.diary-actions button:hover {
-  background-color: #c2185b;
+/* 수정 버튼 */
+.diary-actions .edit-btn {
+  background-color: #f7c1d7;  /* 연한 핑크색 */
+  color: #fff;  /* 제목과 일관성 있는 색상 */
+}
+
+.diary-actions .edit-btn:hover {
+  background-color: #f7a8c7;  /* Hover 시 살짝 어두운 핑크 */
   transform: scale(1.05);
 }
 
-.diary-actions button:active {
+.diary-actions .edit-btn:active {
   transform: scale(0.98);
 }
 
-.diary-actions button:focus {
+.diary-actions .edit-btn:focus {
+  outline: none;
+}
+
+/* 삭제 버튼 */
+.diary-actions .delete-btn {
+  background-color: #f7b6b6;  /* 연한 레드핑크 */
+  color: white;
+}
+
+.diary-actions .delete-btn:hover {
+  background-color: #f56b6b;  /* Hover 시 색상 */
+  transform: scale(1.05);
+}
+
+.diary-actions .delete-btn:active {
+  transform: scale(0.98);
+}
+
+.diary-actions .delete-btn:focus {
   outline: none;
 }

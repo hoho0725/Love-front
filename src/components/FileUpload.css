@@ -1,14 +1,75 @@
-/* /client/src/components/FileUpload.css */
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+/* FileUpload.css */
+
+.file-upload {
+  padding: 1rem;
+  background-color: #fff0f5;  /* 연한 핑크색 배경 */
+  min-height: auto; /* 불필요한 높이 조정 */
+  width: 100%; /* 화면 너비에 맞추기 */
+  max-width: 600px; /* 최대 너비 제한 */
+  margin: 0 auto; /* 가운데 정렬 */
+  border-radius: 16px;
 }
 
-button:hover {
-  background-color: #45a049;
+.file-upload-title {
+  font-size: 1.5rem; /* 폰트 크기 조정 */
+  color: #d81b60;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.file-upload-input {
+  background-color: #fff; /* 하얀색 배경 */
+  border: 1px solid #f8bbd0; /* 파스텔 핑크 테두리 */
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: #d81b60;
+  width: 100%; /* 전체 가로폭을 차지하도록 설정 */
+  box-sizing: border-box; /* padding, border를 포함한 크기 계산 */
+  margin-bottom: 1rem;
+}
+
+.file-upload-button {
+  background-color: #fce4ec; /* 연한 핑크 배경 */
+  color: #d81b60;
+  border: none;
+  border-radius: 16px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: 100%; /* 버튼도 화면에 맞게 꽉 차도록 */
+  box-sizing: border-box;
+}
+
+.file-upload-button:hover {
+  background-color: #f8bbd0;
+  transform: scale(1.05);
+}
+
+.file-upload-error {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .file-upload {
+    padding: 1rem;
+    width: 90%; /* 모바일에서는 90%로 줄여줌 */
+  }
+
+  .file-upload-title {
+    font-size: 1.3rem; /* 모바일에서 폰트 크기 조금 줄이기 */
+  }
+
+  .file-upload-input {
+    padding: 0.8rem; /* 입력 창의 패딩을 적당히 줄여줌 */
+  }
+
+  .file-upload-button {
+    padding: 0.8rem 1rem; /* 버튼 패딩 조정 */
+  }
 }
