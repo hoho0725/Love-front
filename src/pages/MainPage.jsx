@@ -1,4 +1,3 @@
-// src/pages/MainPage.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MainPage.css';
@@ -6,24 +5,31 @@ import './MainPage.css';
 function MainPage() {
   const navigate = useNavigate();
 
-  const handleDateClick = () => {
-    // 예시: 날짜 클릭하면 일기 페이지로 이동
-    navigate('/diary');
-  };
-
   return (
     <div className="main-container">
-      <h1>우리의 추억 💑</h1>
-      <div className="content-wrapper">
-        <div className="calendar-section">
-          <div className="calendar-box" onClick={handleDateClick}>
-            📅 캘린더 (클릭 시 일기 페이지로 이동)
-          </div>
+      <section className="main-hero">
+        <h1>💕 우리의 추억을 기록해요</h1>
+        <p>매일의 하루, 특별했던 순간을 다이어리처럼 남겨보세요</p>
+      </section>
+
+      <section className="feature-grid">
+        <div className="feature-card" onClick={() => navigate('/diary')}>
+          📅 <strong>기념일 캘린더</strong>
+          <p>D-Day를 함께 세보는 작은 행복</p>
         </div>
-        <div className="memory-section">
-          <div className="memory-box">🌸 추억 사진 썸네일</div>
+        <div className="feature-card" onClick={() => navigate('/memory')}>
+          🌸 <strong>추억 갤러리</strong>
+          <p>함께한 순간들을 사진으로 남겨보세요</p>
         </div>
-      </div>
+        <div className="feature-card" onClick={() => navigate('/bucket')}>
+          📝 <strong>버킷리스트</strong>
+          <p>우리만의 목표, 함께 하나씩 이뤄봐요</p>
+        </div>
+        <div className="feature-card" onClick={() => navigate('/emotion')}>
+          💌 <strong>감정 일기</strong>
+          <p>오늘의 기분을 서로 공유해보세요</p>
+        </div>
+      </section>
     </div>
   );
 }
